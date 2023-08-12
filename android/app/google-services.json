@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "714556348858",
+    "project_id": "fantasticassistant-7c5a3",
+    "storage_bucket": "fantasticassistant-7c5a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714556348858:android:54b617eb61383d30f3e583",
+        "android_client_info": {
+          "package_name": "com.example.fanastic_assistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714556348858-p5m4p2f1r9dvi0stfenh0sdju0jpuv20.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCCtoWRTvqw7BrK3pBhM4LfOaa-0Wyqwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714556348858-p5m4p2f1r9dvi0stfenh0sdju0jpuv20.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "714556348858-1bl7dif9kj6818340on0r890i6ghsi2f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fantasticAssistant"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
