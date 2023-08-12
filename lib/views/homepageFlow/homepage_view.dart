@@ -1,21 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../auth.dart';
-import '../utils/const_values.dart';
+import '../../logic/auth/auth.dart';
+import '../../utils/const_values.dart';
 
 class HomepageView extends StatelessWidget {
-  HomepageView({super.key});
-
-  final User? user = Auth().currentUser;
-
-  Future<void> signOut() async {
-    await Auth().signOut();
-  }
-
-  Widget _userId() {
-    return Text(user?.email ?? 'User email');
-  }
+  const HomepageView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +19,11 @@ class HomepageView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _userId(),
+              Text(Auth().currentUser?.email ?? 'User email'),
               ElevatedButton(
-                onPressed: signOut,
+                onPressed: () {
+                  Auth().signOut();
+                },
                 child: const Text('Sign out'),
               ),
             ],

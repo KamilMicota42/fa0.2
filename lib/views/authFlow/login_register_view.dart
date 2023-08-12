@@ -1,8 +1,10 @@
+import 'package:fanastic_assistant/logic/snackbar/show_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../auth.dart';
-import '../utils/const_values.dart';
+import '../../logic/auth/auth.dart';
+import '../../utils/const_values.dart';
+import '../../widgets/entry_field.dart';
 
 class LoginRegisterView extends StatefulWidget {
   const LoginRegisterView({super.key});
@@ -12,7 +14,6 @@ class LoginRegisterView extends StatefulWidget {
 }
 
 class _LoginRegisterViewState extends State<LoginRegisterView> {
-  String? errorMessage = '';
   bool isLogin = true;
 
   final TextEditingController _emailController = TextEditingController();
@@ -25,9 +26,7 @@ class _LoginRegisterViewState extends State<LoginRegisterView> {
         password: _passwordController.text,
       );
     } on FirebaseAuthException catch (e) {
-      setState(() {
-        errorMessage = e.message;
-      });
+      ShowSnackBar().showSnackBar(e.message.toString(), context);
     }
   }
 
@@ -38,24 +37,8 @@ class _LoginRegisterViewState extends State<LoginRegisterView> {
         password: _passwordController.text,
       );
     } on FirebaseAuthException catch (e) {
-      print(e.message);
-      setState(() {
-        errorMessage = e.message;
-      });
+      ShowSnackBar().showSnackBar(e.message.toString(), context);
     }
-  }
-
-  Widget _entryField(String title, TextEditingController controller) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: title,
-      ),
-    );
-  }
-
-  Widget _errorMessage() {
-    return Text(errorMessage == '' ? '' : '$errorMessage');
   }
 
   @override
@@ -71,9 +54,8 @@ class _LoginRegisterViewState extends State<LoginRegisterView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _entryField('email', _emailController),
-              _entryField('password', _passwordController),
-              _errorMessage(),
+              EntryField(title: 'email', controller: _emailController),
+              EntryField(title: 'password', controller: _passwordController),
               ElevatedButton(
                 onPressed: isLogin
                     ? signInWithEmailAndPassword

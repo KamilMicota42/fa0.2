@@ -1,6 +1,6 @@
-import 'package:fanastic_assistant/auth.dart';
-import 'package:fanastic_assistant/views/homepage_view.dart';
-import 'package:fanastic_assistant/views/login_register_view.dart';
+import 'package:fanastic_assistant/logic/auth/auth.dart';
+import 'package:fanastic_assistant/views/homepageFlow/homepage_view.dart';
+import 'package:fanastic_assistant/views/authFlow/login_register_view.dart';
 import 'package:flutter/material.dart';
 
 class WidgetTree extends StatefulWidget {
@@ -17,7 +17,7 @@ class _WidgetTreeState extends State<WidgetTree> {
       stream: Auth().authStatechanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return HomepageView();
+          return const HomepageView();
         } else {
           return const LoginRegisterView();
         }
